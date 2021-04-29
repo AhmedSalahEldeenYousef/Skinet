@@ -1,0 +1,14 @@
+
+
+>Serilog.AspNetCore
+
+[[[Very Important Two Packages]]]
+
+1- > Serilog.AspNetCore
+
+2- > Serilog.Settings.Configuration
+
+------------------ Addentional -------------------
+3- > Serilog.Enrichers.Environment
+4- > Serilog.Enrichers.Thread
+5- > Serilog.Enrichers.Process
