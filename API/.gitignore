@@ -2,8 +2,9 @@
 bin
 obj
 *.db
+Project_Information
 appsettings.json
 appsettings.Development.json
-Project_Information
+
 App_Data
 
