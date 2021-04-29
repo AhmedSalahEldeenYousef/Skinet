@@ -3,6 +3,9 @@ bin
 obj
 *.db
 Project_Information
+GitHubInfo.txt
+SkinetProjectRoadMap.txt
+SkinetProjectRoadMap.txt
 appsettings.json
 appsettings.Development.json
 
