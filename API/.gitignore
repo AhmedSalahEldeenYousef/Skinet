@@ -1,0 +1,9 @@
+.vscode
+bin
+obj
+*.db
+appsettings.json
+appsettings.Development.json
+Project_Information
+App_Data
+

@@ -1,0 +1,61 @@
+
+
+	Project Notes
+	/*************************************************
+	The Project Will Contain Three Projects
+	
+	API            -> Receive Http Request And Respond Them
+	
+	Infrastructure -> Communicate With The Db And Send quires And Get Data
+	
+	Core   		   -> Contain The Business Entities We don't Depend Any Thing Else
+	
+	
+	Some Commands
+	
+	>> dotnet new sln
+	>> dotnet new webapi -o API
+	
+	>> dotnet sln -h
+	
+	>>  dotnet sln add API/
+	
+	>>  dotnet sln list  ====> Th show Projects That Contain
+	>> dotnet dev-certs https   ==> A valid HTTPS certificate
+
+	>> dotnet dev-certs https -t
+
+	>> dotnet --info ===> To Get Some Information About Dotnet Like Version etc...
+
+	skinet>>  dotnet restore   ==> To Rebuild Your Project
+
+	 >>dotnet tool [update / install] --global dotnet-ef --version 5.0.201   ==>TO Upgrade The Entity Framework tools version '5.0.201' The Version Of Dotnet Project
+	>> dotnet new classlib -o Core >> Will Contain Our Domain Entities
+
+	>>  dotnet new classlib -o Infrastructure >> Will Contain Things Like Store Context
+	[Adding Infrastructure reference To Our API]
+	API>>              dotnet add reference ..\Infrastructure\
+	Infrastructure >>  dotnet ad reference ..\Core\
+	Then Restore Our Project
+	Skenet> dotnet restore
+    [Add Migration And Updating Database]
+      skenet > dotnet ef Migrations add InitialCreate -p .\Infrastructure\ -s API -o Data/Migrations
+     skenet > dotnet ef Database drope  -p .\Infrastructure\ -s API	
+**************************************************/	 
+	[[Git Commands]]
+/*************************************************
+
+	1- >skinet > git status
+	2- >skinet > git init
+	 
+**************************************************/	 
+	       //Some vocabulary
+/*************************************************
+
+
+	 Implies => يدل
+	 residing => مقيم
+     dependency on =>معتمد على
+	portable => محمول
+	essential => اساسى
+**************************************************/	 
