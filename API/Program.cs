@@ -7,34 +7,35 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Infrastructure.Data;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace API
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
-            var config = new ConfigurationBuilder()
-            .AddJsonFile("appsettings.Development.json").Build();
-
-            //Initial To SeriLog
-            Log.Logger = new LoggerConfiguration()
-              .ReadFrom.Configuration(config)
-              .CreateLogger();
+            // var config = new ConfigurationBuilder()
+            // .AddJsonFile("appsettings.Development.json").Build();
+            var host = CreateHostBuilder(args).Build();
+            using var scope = host.Services.CreateScope();
+            var services = scope.ServiceProvider;
+            var loggerFactory = services.GetRequiredService<ILoggerFactory>();
             try
             {
-                Log.Information("Application Starting");
-                CreateHostBuilder(args).Build().Run();
+                var context = services.GetRequiredService<StoreContext>();
+
+                await StoreContextSeed.SeedAsync(context, loggerFactory);
+
             }
             catch (Exception ex)
             {
-
-                Log.Fatal(ex, "The Appliction Feild To Start");
-            } finally
-            {
-                Log.CloseAndFlush();
+                var logger = loggerFactory.CreateLogger<Program>();
+                logger.LogError(ex, "An error occurred during migration");
             }
-          
+
+            host.Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
