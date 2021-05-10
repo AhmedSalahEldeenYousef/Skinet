@@ -24,8 +24,8 @@ namespace API
             var loggerFactory = services.GetRequiredService<ILoggerFactory>();
             try
             {
+                CreateHostBuilder(args).Build().Run();
                 var context = services.GetRequiredService<StoreContext>();
-
                 await StoreContextSeed.SeedAsync(context, loggerFactory);
 
             }
@@ -35,7 +35,7 @@ namespace API
                 logger.LogError(ex, "An error occurred during migration");
             }
 
-            host.Run();
+
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
