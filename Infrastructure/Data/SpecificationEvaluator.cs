@@ -26,6 +26,22 @@ namespace Infrastructure.Data
             {
                 Query = Query.Where(spec.Criteria);  //Where(p=>p.ProductId ==Id)
             }
+            //Check Order By Value
+            if (spec.OrderBy != null)
+            {
+                Query = Query.OrderBy(spec.OrderBy);
+            }
+
+            if (spec.OrderByDescending != null)
+            {
+                Query = Query.OrderByDescending(spec.OrderByDescending);
+            }
+
+            if (spec.IsPagingEnabled)
+            {
+                Query = Query.Skip(spec.Skip).Take(spec.Take);
+            }
+
 
             //Currnet => Whicj Represents The Entity
             //includes => Which Is Gonna Be The Expression Of Our Includes
